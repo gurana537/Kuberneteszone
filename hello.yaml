@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: Livenessprobe
+Spec: 
+  restartPolicy: Never
+  containers:
+    - name: ununtu
+      image: ubuntu:lattest
+      command:
+        - /bin/bash
+        - /etc
+        - touch /tmp/qt; sleep 30; rm /tmp/qt; sleep 200
+      Livenessprobe:
+        exec:
+          command:
+            - cat
+            - /tmp/qt
+        initialDelaySeconds: 5
+        periodSeconds: 5       
